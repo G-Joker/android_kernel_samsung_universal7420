@@ -319,7 +319,7 @@ struct SmtDimInfo daisy_dimming_info_RD[MAX_BR_INFO] = {				// add hbm array
 	{.br = 152, .refBr = 217, .cGma = gma2p15, .rTbl = RDdrtbl152nit, .cTbl = RDdctbl152nit, .aid = aid3637, .elvCaps = delvCaps6, .elv = delv6, .way = W1},
 	{.br = 162, .refBr = 228, .cGma = gma2p15, .rTbl = RDdrtbl162nit, .cTbl = RDdctbl162nit, .aid = aid3637, .elvCaps = delvCaps7, .elv = delv7, .way = W1},
 	{.br = 172, .refBr = 243, .cGma = gma2p15, .rTbl = RDdrtbl172nit, .cTbl = RDdctbl172nit, .aid = aid3637, .elvCaps = delvCaps7, .elv = delv7, .way = W1},
-	{.br = 183, .refBr = 257, .cGma = gma2p15, .rTbl = RCdrtbl183nit, .cTbl = RCdctbl183nit, .aid = aid3680, .elvCaps = delvCaps7, .elv = delv7, .way = W1},
+	{.br = 183, .refBr = 257, .cGma = gma2p15, .rTbl = RDdrtbl183nit, .cTbl = RDdctbl183nit, .aid = aid3637, .elvCaps = delvCaps7, .elv = delv7, .way = W1},
 	{.br = 195, .refBr = 257, .cGma = gma2p15, .rTbl = RDdrtbl195nit, .cTbl = RDdctbl195nit, .aid = aid3168, .elvCaps = delvCaps7, .elv = delv7, .way = W1},
 	{.br = 207, .refBr = 257, .cGma = gma2p15, .rTbl = RDdrtbl207nit, .cTbl = RDdctbl207nit, .aid = aid2659, .elvCaps = delvCaps7, .elv = delv7, .way = W1},
 	{.br = 220, .refBr = 257, .cGma = gma2p15, .rTbl = RDdrtbl220nit, .cTbl = RDdctbl220nit, .aid = aid2186, .elvCaps = delvCaps8, .elv = delv8, .way = W1},
@@ -1419,7 +1419,6 @@ static int s6e3hf2_wqhd_init(struct dsim_device *dsim)
 	}
 	msleep(5);
 
-
 	/* 9. Interface Setting */
 	ret = dsim_write_hl_data(dsim, SEQ_TEST_KEY_ON_F0, ARRAY_SIZE(SEQ_TEST_KEY_ON_F0));
 	if (ret < 0) {
@@ -1545,12 +1544,12 @@ static int s6e3hf2_wqhd_init(struct dsim_device *dsim)
 		goto init_exit;
 	}
 	/* ACL Setting */
-	ret = dsim_write_hl_data(dsim, SEQ_ACL_OFF, ARRAY_SIZE(SEQ_ACL_OFF));
+	ret = dsim_write_hl_data(dsim, S6E3HF2_SEQ_ACL_OFF, ARRAY_SIZE(S6E3HF2_SEQ_ACL_OFF));
 	if (ret < 0) {
 		dsim_err(":%s fail to write CMD : SEQ_ACL_OFF\n", __func__);
 		goto init_exit;
 	}
-	ret = dsim_write_hl_data(dsim, SEQ_ACL_OFF_OPR_AVR, ARRAY_SIZE(SEQ_ACL_OFF_OPR_AVR));
+	ret = dsim_write_hl_data(dsim, S6E3HF2_SEQ_ACL_OFF_OPR, ARRAY_SIZE(S6E3HF2_SEQ_ACL_OFF_OPR));
 	if (ret < 0) {
 		dsim_err(":%s fail to write CMD : SEQ_ACL_OFF_OPR\n", __func__);
 		goto init_exit;

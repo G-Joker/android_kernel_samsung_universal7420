@@ -28,6 +28,8 @@
 #include "mdnie_lite_table_noble.h"
 #elif defined(CONFIG_PANEL_S6E3HF3_DYNAMIC)
 #include "mdnie_lite_table_zen.h"
+#elif defined(CONFIG_PANEL_S6E3FA3_A8XE)
+#include "mdnie_lite_table_a8xe.h"
 #endif
 #endif
 
@@ -315,6 +317,8 @@ static int dsim_panel_exitalpm(struct dsim_device *dsim)
 			return ret;
 		}
 	}
+
+	panel->curr_alpm_mode = ALPM_OFF;
 	return ret;
 }
 #endif
