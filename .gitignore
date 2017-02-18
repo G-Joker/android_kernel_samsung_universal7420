@@ -91,6 +91,7 @@ fmp_hmac.bin
 build_kernel.sh
 build.sh
 env_setup.sh
+arch/arm64/configs/mawrick26-zerolte_defconfig
 
 # stgit generated dirs
 patches-*
